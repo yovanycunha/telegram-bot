@@ -14,7 +14,21 @@ bot.on('message', (msg) => {
     if (msg.text.toString().toLowerCase().indexOf(Bye) === 0) {
         bot.sendMessage(msg.chat.id, 'xau mô');
     }
+
+    const robot = "I'm a robot";
+    if (msg.text.indexOf(robot) === 0) {
+        bot.sendMessage(msg.chat.id, 'Oh, rly ?');
+    }
 })
+
+bot.onText(/\/start/, (msg) => {
+
+    bot.sendMessage(msg.chat.id, "Welcome", {
+        "reply_markup": {
+            "keyboard" : [["Sample text", "Second Sample"], ["Keyboard"], ["I'm a robot"]]
+        }
+    });
+});
 
 bot.onText(/\/couple/, (msg) => {
     bot.sendPhoto(msg.chat.id, "./img/IMG-20160705-WA0006.jpg", {caption: 'eu e mo ♥'});
